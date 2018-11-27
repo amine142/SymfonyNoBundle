@@ -1,0 +1,9 @@
+## YAML Template.
+---
+# routes.yml
+route1:
+    path:     /
+    defaults: { _controller: 'DefaultController::indexAction' }
+route2:
+    path:     /test
+    defaults: { _controller: 'DefaultController::testAction' }

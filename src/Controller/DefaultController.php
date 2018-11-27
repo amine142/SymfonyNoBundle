@@ -12,6 +12,11 @@ class DefaultController
 {
     public function indexAction(Request $request)
     {
-        return new Response('ok', 200);
+        return new Response('<b>Default Home Page</b>', 200);
+    }
+    
+    public function testAction(Request $request)
+    {
+        return new Response('<b>test Action page</b>', 200);
     }
 }
