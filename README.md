@@ -3,4 +3,8 @@ Instructions :
 
 1- install vendor : composer install <br/>
 2- start built-in PHP webserver : php -S 0.0.0.0:8080 <br/>
-3- visit your defaut homepage : http://0.0.0.0:8080/index.php/ to access home page or http://0.0.0.0:8080/index.php/test to access test action page<br/>
+3- visit your defaut homepage : http://0.0.0.0:8080/  or http://0.0.0.0:8080/test to access test action page<br/>
+
+<br/>
+
+extends by adding Model, layout and views
