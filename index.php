@@ -7,6 +7,7 @@
  */
 $loader = require __DIR__.'/vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernel as Kernel;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
@@ -40,8 +41,14 @@ $request =  Request::createFromGlobals();
 $context = new RequestContext('/');
 $matcher = new UrlMatcher($routes, $context);
 
-$parameters = $matcher->match($request->getPathInfo());
-$request->attributes->set('_controller',$parameters['_controller']);
+try{
+    $parameters = $matcher->match($request->getPathInfo());
+    $request->attributes->set('_controller',$parameters['_controller']);
+}catch (Exception $e){
+    $response = new Response("<b>{$e->getMessage()}</b>", 404);
+    $response->send();
+    $kernel->terminate($request, $response);
+}
 
 $response = $kernel->handle($request);
 $response->send();
